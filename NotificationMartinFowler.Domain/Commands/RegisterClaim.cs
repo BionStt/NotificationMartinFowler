@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using NotificationsMartinFowler.Domain.Dto;
-using NotificationsMartinFowler.Domain.Mocks;
-using NotificationsMartinFowler.Domain.Notifications;
+using NotificationMartinFowler.Domain.Dto;
+using NotificationMartinFowler.Domain.Mocks;
+using NotificationMartinFowler.Domain.Notifications;
 
-namespace NotificationsMartinFowler.Domain.Commands
+namespace NotificationMartinFowler.Domain.Commands
 {
     public class RegisterClaim : ServerCommand
     {

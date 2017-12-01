@@ -1,7 +1,7 @@
-﻿using NotificationsMartinFowler.Domain.Dto;
-using NotificationsMartinFowler.Domain.Notifications;
+﻿using NotificationMartinFowler.Domain.Dto;
+using NotificationMartinFowler.Domain.Notifications;
 
-namespace NotificationsMartinFowler.Domain.Commands
+namespace NotificationMartinFowler.Domain.Commands
 {
     public class ServerCommand
     {

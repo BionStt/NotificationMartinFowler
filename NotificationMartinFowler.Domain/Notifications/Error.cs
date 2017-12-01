@@ -1,4 +1,4 @@
-﻿namespace NotificationsMartinFowler.Domain.Notifications
+﻿namespace NotificationMartinFowler.Domain.Notifications
 {
     public class Error
     {

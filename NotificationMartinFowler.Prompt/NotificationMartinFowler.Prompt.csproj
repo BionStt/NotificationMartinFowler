@@ -48,13 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Dto\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NotificationsMartinFowler.Domain\NotificationsMartinFowler.Domain.csproj">
+    <ProjectReference Include="..\NotificationMartinFowler.Domain\NotificationMartinFowler.Domain.csproj">
       <Project>{2e84a86c-3658-4ae4-bb3c-dd0721841043}</Project>
-      <Name>NotificationsMartinFowler.Domain</Name>
+      <Name>NotificationMartinFowler.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

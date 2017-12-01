@@ -1,7 +1,7 @@
 ﻿using System;
-using NotificationsMartinFowler.Domain.Dto;
-using NotificationsMartinFowler.Domain.Notifications;
-using NotificationsMartinFowler.Domain.Services;
+using NotificationMartinFowler.Domain.Dto;
+using NotificationMartinFowler.Domain.Notifications;
+using NotificationMartinFowler.Domain.Services;
 
 namespace NotificationMartinFowler.Prompt
 {

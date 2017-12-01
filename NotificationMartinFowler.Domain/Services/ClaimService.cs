@@ -1,7 +1,7 @@
-﻿using NotificationsMartinFowler.Domain.Commands;
-using NotificationsMartinFowler.Domain.Dto;
+﻿using NotificationMartinFowler.Domain.Commands;
+using NotificationMartinFowler.Domain.Dto;
 
-namespace NotificationsMartinFowler.Domain.Services
+namespace NotificationMartinFowler.Domain.Services
 {
     public class ClaimService
     {

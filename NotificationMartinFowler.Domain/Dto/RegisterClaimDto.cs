@@ -1,7 +1,7 @@
 ﻿using System;
-using NotificationsMartinFowler.Domain.Notifications;
+using NotificationMartinFowler.Domain.Notifications;
 
-namespace NotificationsMartinFowler.Domain.Dto
+namespace NotificationMartinFowler.Domain.Dto
 {
     public class RegisterClaimDto : DataTransferObject
     {

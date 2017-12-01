@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace NotificationsMartinFowler.Domain.Notifications
+namespace NotificationMartinFowler.Domain.Notifications
 {
     public class Notification
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NotificationsMartinFowler.Domain.Mocks
+namespace NotificationMartinFowler.Domain.Mocks
 {
     public class Policy
     {
