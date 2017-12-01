@@ -7,7 +7,7 @@ namespace NotificationMartinFowler.Prompt
 {
     internal class Program
     {
-        private RegisterClaimDto _claim;
+        private static RegisterClaimDto _claim;
         private static string _policyNumber;
         private static DateTime _incidentDate;
         private static string _policyType;
@@ -18,13 +18,16 @@ namespace NotificationMartinFowler.Prompt
             Console.WriteLine("Type policy ID");
             _policyNumber = Console.ReadLine();
             Console.WriteLine("Type incident type");
-            _incidentDate = Convert.ToDateTime(Console.ReadLine());
-            Console.WriteLine("Type incident date");
             _policyType = Console.ReadLine();
+            Console.WriteLine("Type incident date");
+            if (!DateTime.TryParse(Console.ReadLine(), out _incidentDate))
+                _incidentDate = DateTime.Now;
             _claimService = new ClaimService();
+            Submit();
+            Console.ReadKey();
         }
 
-        public void Submit()
+        private static void Submit()
         {
             SaveToClaim();
             _claimService.RegisterClaim(_claim);
@@ -35,27 +38,28 @@ namespace NotificationMartinFowler.Prompt
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Registration Succeeded");
             }
         }
 
-        private void SaveToClaim()
+        private static void SaveToClaim()
         {
             _claim = new RegisterClaimDto(_policyNumber, _policyType, _incidentDate);
         }
 
-        private void IndicateErrors()
+        private static void IndicateErrors()
         {
-            CheckError(RegisterClaimDto.MissingPolicyNumber);
-            CheckError(RegisterClaimDto.MissingIncidentType);
-            CheckError(RegisterClaimDto.DateBeforePolicyStart);
-            CheckError(RegisterClaimDto.MissingIncidentDate);
+            CheckError(RegisterClaimDto.MissingPolicyNumber, _policyNumber);
+            CheckError(RegisterClaimDto.MissingIncidentType, _policyType);
+            CheckError(RegisterClaimDto.DateBeforePolicyStart, _incidentDate);
+            CheckError(RegisterClaimDto.MissingIncidentDate, _incidentDate);
         }
 
-        private void CheckError(Error error)
+        private static void CheckError(Error error, object value)
         {
             if (_claim.Notification.IncludesError(error))
-                ShowError(error.ToString());
+                ShowError(error + " | " + value);
         }
 
         private static void ShowError(string message)

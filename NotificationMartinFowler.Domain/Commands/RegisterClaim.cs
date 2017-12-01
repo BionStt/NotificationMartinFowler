@@ -47,6 +47,7 @@ namespace NotificationMartinFowler.Domain.Commands
 
         protected void Fail(bool condition, Error error)
         {
+            // BUG: Não está adicionando as notificações
             if (condition)
                 Notification.Errors.Add(error);
         }

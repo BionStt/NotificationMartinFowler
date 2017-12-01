@@ -48,7 +48,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\NotificationMartinFowler.Domain\NotificationMartinFowler.Domain.csproj">
       <Project>{2e84a86c-3658-4ae4-bb3c-dd0721841043}</Project>
