@@ -1,15 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 
 namespace NotificationMartinFowler.Domain.Notifications
 {
     public class Notification
     {
-        public Notification()
-        {
-            Errors = new List<Error>();
-        }
+        public IList Errors { get; set; } = new ArrayList();
 
-        public List<Error> Errors { get; set; }
         public bool HasErrors => 0 != Errors.Count;
 
         public bool IncludesError(Error error)

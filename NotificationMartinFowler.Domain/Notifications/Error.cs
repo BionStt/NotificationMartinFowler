@@ -2,15 +2,15 @@
 {
     public class Error
     {
+        private readonly string _message;
         public Error(string message)
         {
-            Message = message;
+            _message = message;
         }
 
-        public string Message { get; }
         public override string ToString()
         {
-            return Message;
+            return _message;
         }
     }
 }

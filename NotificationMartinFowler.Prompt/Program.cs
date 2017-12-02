@@ -22,12 +22,13 @@ namespace NotificationMartinFowler.Prompt
             Console.WriteLine("Type incident date");
             if (!DateTime.TryParse(Console.ReadLine(), out _incidentDate))
                 _incidentDate = DateTime.Now;
+
             _claimService = new ClaimService();
             Submit();
             Console.ReadKey();
         }
 
-        private static void Submit()
+        public static void Submit()
         {
             SaveToClaim();
             _claimService.RegisterClaim(_claim);
@@ -45,15 +46,22 @@ namespace NotificationMartinFowler.Prompt
 
         private static void SaveToClaim()
         {
-            _claim = new RegisterClaimDto(_policyNumber, _policyType, _incidentDate);
+            _claim = new RegisterClaimDto
+            {
+                PolicyId = _policyNumber,
+                IncidentDate = _incidentDate,
+                Type = _policyType
+            };
         }
 
         private static void IndicateErrors()
         {
             CheckError(RegisterClaimDto.MissingPolicyNumber, _policyNumber);
+            CheckError(RegisterClaimDto.UnknownPolicyNumber, _policyNumber);
             CheckError(RegisterClaimDto.MissingIncidentType, _policyType);
             CheckError(RegisterClaimDto.DateBeforePolicyStart, _incidentDate);
             CheckError(RegisterClaimDto.MissingIncidentDate, _incidentDate);
+            CheckError(RegisterClaimDto.DateBeforePolicyStart, _incidentDate);
         }
 
         private static void CheckError(Error error, object value)

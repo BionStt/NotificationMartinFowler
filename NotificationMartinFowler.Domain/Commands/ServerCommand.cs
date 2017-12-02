@@ -5,12 +5,12 @@ namespace NotificationMartinFowler.Domain.Commands
 {
     public class ServerCommand
     {
-        public ServerCommand(DataTransferObject data)
+        public ServerCommand(DataTransferObject dataTransferObject)
         {
-            Data = data;
+            DartaTransferObject = dataTransferObject;
         }
 
-        protected DataTransferObject Data { get; }
-        public Notification Notification => Data.Notification;
+        protected DataTransferObject DartaTransferObject;
+        protected Notification Notification => DartaTransferObject.Notification;
     }
 }
