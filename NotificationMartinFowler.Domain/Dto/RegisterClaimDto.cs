@@ -5,13 +5,17 @@ namespace NotificationMartinFowler.Domain.Dto
 {
     public class RegisterClaimDto : DataTransferObject
     {
-        public string PolicyId { get; set; }
 
-        public string Type { get; set; }
+        public RegisterClaimDto(string policyId, string type, DateTime incidentDate)
+        {
+            PolicyId = policyId;
+            Type = type;
+            IncidentDate = incidentDate;
+        }
 
-        public DateTime IncidentDate { get; set; } = BlankDate;
-
-        public static DateTime BlankDate => DateTime.MinValue;
+        public string PolicyId { get; }
+        public string Type { get; }
+        public DateTime IncidentDate { get; }
 
         public static Error MissingPolicyNumber = new Error("Policy number is missing");
         public static Error UnknownPolicyNumber = new Error("This policy number is unknown");

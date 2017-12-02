@@ -46,16 +46,14 @@ namespace NotificationMartinFowler.Prompt
 
         private static void SaveToClaim()
         {
-            _claim = new RegisterClaimDto
-            {
-                PolicyId = _policyNumber,
-                IncidentDate = _incidentDate,
-                Type = _policyType
-            };
+            _claim = new RegisterClaimDto(_policyNumber, _policyType, _incidentDate);
         }
 
         private static void IndicateErrors()
         {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("\nERRORS\n");
             CheckError(RegisterClaimDto.MissingPolicyNumber, _policyNumber);
             CheckError(RegisterClaimDto.UnknownPolicyNumber, _policyNumber);
             CheckError(RegisterClaimDto.MissingIncidentType, _policyType);

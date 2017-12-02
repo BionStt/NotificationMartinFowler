@@ -4,6 +4,6 @@ namespace NotificationMartinFowler.Domain.Dto
 {
     public class DataTransferObject
     {
-        public Notification Notification { get; set; } = new Notification();
+        public Notification Notification { get; } = new Notification();
     }
 }

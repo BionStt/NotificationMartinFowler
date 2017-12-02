@@ -1,4 +1,5 @@
-﻿using NotificationMartinFowler.Domain.Dto;
+﻿using System;
+using NotificationMartinFowler.Domain.Dto;
 using NotificationMartinFowler.Domain.Mocks;
 using NotificationMartinFowler.Domain.Notifications;
 
@@ -24,8 +25,8 @@ namespace NotificationMartinFowler.Domain.Commands
         {
             FailIfNullOrBlank(_registerClaimDto.PolicyId, RegisterClaimDto.MissingPolicyNumber);
             FailIfNullOrBlank(_registerClaimDto.Type, RegisterClaimDto.MissingIncidentType);
-            Fail(_registerClaimDto.IncidentDate == RegisterClaimDto.BlankDate, RegisterClaimDto.MissingIncidentDate);
-            if (IsNullOrBlank(_registerClaimDto.PolicyId)) return;
+            Fail(_registerClaimDto.IncidentDate == DateTime.MinValue, RegisterClaimDto.MissingIncidentDate);
+            if (string.IsNullOrWhiteSpace(_registerClaimDto.PolicyId)) return;
             Policy policy = Db.Policies.Find(x => x.PolicyId == _registerClaimDto.PolicyId);
             if (policy == null)
             {
@@ -38,17 +39,14 @@ namespace NotificationMartinFowler.Domain.Commands
             }
         }
 
-        protected bool IsNullOrBlank(string s)
-        {
-            return string.IsNullOrEmpty(s);
-        }
         protected void FailIfNullOrBlank(string s, Error error)
         {
-            Fail(IsNullOrBlank(s), error);
+            Fail(string.IsNullOrWhiteSpace(s), error);
         }
         protected void Fail(bool condition, Error error)
         {
-            if (condition) Notification.Errors.Add(error);
+            if (condition)
+                Notification.Errors.Add(error);
         }
 
         private static void RegisterClaimInBackendSystems()
